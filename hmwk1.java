@@ -5,7 +5,7 @@ and then display the data from the variable. */
 
 import java.util.Scanner;
 
-class hmwk1 {
+class Hmwk1 {
   public static void main (String [] args) {
     // open a new sanner to read user input
     Scanner scanner = new Scanner(System.in);
