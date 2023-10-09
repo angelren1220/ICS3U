@@ -32,7 +32,6 @@ class Salary {
 
     // close the scanner
     scanner.close();
-    ;
 
     // return the array
     return data;
