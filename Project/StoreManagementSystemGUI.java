@@ -27,6 +27,12 @@ public class StoreManagementSystemGUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         String itemName = JOptionPane.showInputDialog("Enter the name of the item to search:");
+
+        // Check if the user clicked "Cancel"
+        if (itemName == null) {
+          return; // Exit the action without doing anything
+        }
+
         int itemIndex = -1;
         for (int i = 0; i < data.length; i++) {
           if (data[i][0].equalsIgnoreCase(itemName)) {
@@ -49,6 +55,12 @@ public class StoreManagementSystemGUI {
       @Override
       public void actionPerformed(ActionEvent e) {
         String itemName = JOptionPane.showInputDialog("Enter the name of the item to update:");
+
+        // Check if the user clicked "Cancel"
+        if (itemName == null) {
+          return; // Exit the action without doing anything
+        }
+
         int itemIndex = -1;
         for (int i = 0; i < data.length; i++) {
           if (data[i][0].equalsIgnoreCase(itemName)) {
@@ -100,7 +112,7 @@ public class StoreManagementSystemGUI {
     menuPanel.add(exitButton);
 
     // Set properties of the frame
-    frame.setSize(600, 400);
+    frame.setSize(500, 100);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     // Set the frame to visible
