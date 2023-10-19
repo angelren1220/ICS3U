@@ -50,7 +50,29 @@ public class StoreManagementSystem {
           break;
 
         case 3: // update item
-          updateItem(items, scanner);
+          System.out.println("Choose an option to be updated:");
+          System.out.println("1. name");
+          System.out.println("2. stock");
+          System.out.println("3. price");
+          
+          int updateOption = scanner.nextInt();
+          scanner.nextLine(); // Consume newline
+
+          if(updateOption == 1){
+            updateItem(items, scanner);
+          }
+
+          else if(updateOption == 2){
+            updateStock(stock, scanner);
+          }
+
+          else if(updateOption == 3){
+            updatePrice(price, scanner);
+          }
+
+          else{
+            System.out.println("Invalid option. Back to main menu.");
+          }
           break;
 
         case 4: // exit
@@ -94,6 +116,28 @@ public class StoreManagementSystem {
     System.out.println("Enter the name:");
     String name = scanner.nextLine();
     items[index] = name;
+
+  }
+
+  public static void updateStock(int[] stock, Scanner scanner) {
+    System.out.println("Enter the stock index to be updated:");
+    int index = scanner.nextInt();
+    scanner.nextLine(); // consume new line
+
+    System.out.println("Enter the updated stock:");
+    int number = scanner.nextInt();
+    stock[index] = number;
+
+  }
+
+  public static void updatePrice(double[] price, Scanner scanner) {
+    System.out.println("Enter the price index to be updated:");
+    int index = scanner.nextInt();
+    scanner.nextLine(); // consume new line
+
+    System.out.println("Enter the updated price:");
+    double number = scanner.nextDouble();
+    price[index] = number;
 
   }
 }
