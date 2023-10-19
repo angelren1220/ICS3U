@@ -9,8 +9,12 @@ The user (owner of the store) can do followings with menu
 
 package Project;
 
+import java.util.Scanner;
+
 public class StoreManagementSystem {
-  public static void main(String[] args){
+  public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
 
     // declare contents of store managment system
     String[] items = new String[10];
@@ -26,6 +30,53 @@ public class StoreManagementSystem {
     System.out.println("3. search item");
     System.out.println("4. update item");
     System.out.println("5. exit");
-    
+
+    while (true) {
+      int option = scanner.nextInt();
+
+      switch (option) {
+        case 1: // view all items
+          viewAllitems();
+          break;
+
+        case 2: // add items
+          addItems();
+          break;
+
+        case 3: // search item
+          searchItem();
+          break;
+
+        case 4: // update item
+          updateItem();
+          break;
+
+        case 5: // exit
+          System.out.println("Goodbye, Ms.Shiro!");
+          return;
+
+        default:
+          System.out.println("Invalid option. Please try again.");
+
+      }
+    }
+
+  }
+
+  /* Methods */
+  public static void viewAllitems() {
+    System.out.println("view all items");
+  }
+
+  public static void addItems() {
+    System.out.println("add items");
+  }
+
+  public static void searchItem() {
+    System.out.println("search item");
+  }
+
+  public static void updateItem() {
+    System.out.println("update item");
   }
 }
