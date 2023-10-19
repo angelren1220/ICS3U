@@ -41,7 +41,12 @@ public class StoreManagementSystem {
 
         case 2: // search item
           int index = searchItem(items, scanner);
-          System.out.println(stock[index] + " in stock price: $" + price[index]);
+          
+          if(index != -1){
+            System.out.println(stock[index] + " in stock price: $" + price[index]);
+          } else {
+            System.out.println("Could not find the item.");
+          }
           break;
 
         case 3: // update item
