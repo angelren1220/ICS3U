@@ -22,13 +22,7 @@ public class StoreManagementSystem {
     double[] price = { 69.99, 48.50, 9.99, 4.59, 18.45 };
 
     // Menu for users
-    System.out.println("====== Ms.Shiro's Store Management System ====== ");
-    System.out.println("Welcom Ms.Shiro!");
-    System.out.println("Choose your option:");
-    System.out.println("1. view all items");
-    System.out.println("2. search item");
-    System.out.println("3. update item");
-    System.out.println("4. exit");
+    displayMenu();
 
     while (true) {
       int option = scanner.nextInt();
@@ -38,16 +32,18 @@ public class StoreManagementSystem {
         case 1: // view all items
           System.out.println("View all items:");
           viewAllItems(items, stock, price);
+          displayMenu();
           break;
 
         case 2: // search item
           int index = searchItem(items, scanner);
 
           if (index != -1) {
-            System.out.println("Index: " + index + items[index] + stock[index] + " in stock price: $" + price[index]);
+            System.out.println("Index: " + index + " " + items[index] + " " + stock[index] + " in stock price: $" + price[index]);
           } else {
             System.out.println("Could not find the item.");
           }
+          displayMenu();
           break;
 
         case 3: // update item
@@ -74,6 +70,7 @@ public class StoreManagementSystem {
               System.out.println("Invalid option. Back to main menu.");
               break;
           }
+          displayMenu();
           break;
 
         case 4: // exit
@@ -83,6 +80,7 @@ public class StoreManagementSystem {
 
         default:
           System.out.println("Invalid option. Please try again.");
+          displayMenu();
 
       }
 
@@ -133,6 +131,7 @@ public class StoreManagementSystem {
     System.out.println("Enter the name:");
     String name = scanner.nextLine();
     items[index] = name;
+    System.out.println("Update successfully!");
 
   }
 
@@ -147,6 +146,7 @@ public class StoreManagementSystem {
     System.out.println("Enter the updated stock:");
     int number = scanner.nextInt();
     stock[index] = number;
+    System.out.println("Update successfully!");
 
   }
 
@@ -161,6 +161,7 @@ public class StoreManagementSystem {
     System.out.println("Enter the updated price:");
     double number = scanner.nextDouble();
     price[index] = number;
+    System.out.println("Update successfully!");
 
   }
 
@@ -174,5 +175,18 @@ public class StoreManagementSystem {
       sum += stock[i];
     }
     return sum;
+  }
+
+  /**
+   * Display the menu for user
+   */
+  public static void displayMenu() {
+    System.out.println("\n====== Ms.Shiro's Store Management System ======");
+    System.out.println("Welcome Ms.Shiro!");
+    System.out.println("Choose your option:");
+    System.out.println("1. view all items");
+    System.out.println("2. search item");
+    System.out.println("3. update item");
+    System.out.println("4. exit\n");
   }
 }
