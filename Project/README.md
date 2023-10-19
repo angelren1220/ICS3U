@@ -41,6 +41,8 @@ This is the main class that runs the management system.
 **Methods:**
 
 - `main(String[] args)`: This is the entry point of the application. It displays the main menu and processes user input to navigate through various options.
+
+- `void addItems(String[] items, int[] stock, double[] price, Scanner scanner)`: Adds each item with name, stock and price.
   
 - `viewAllItems(String[] items, int[] stock, double[] price)`: Displays all the items in the store with their respective stock counts and prices.
 
