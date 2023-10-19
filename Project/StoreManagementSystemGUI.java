@@ -48,7 +48,40 @@ public class StoreManagementSystemGUI {
     updateItemButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Update Item Button Pressed");
+        String itemName = JOptionPane.showInputDialog("Enter the name of the item to update:");
+        int itemIndex = -1;
+        for (int i = 0; i < data.length; i++) {
+          if (data[i][0].equalsIgnoreCase(itemName)) {
+            itemIndex = i;
+            break;
+          }
+        }
+
+        if (itemIndex != -1) {
+          Object[] options = { "Name", "Stock", "Price" };
+          int n = JOptionPane.showOptionDialog(null, "What would you like to update?", "Update Options",
+              JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
+
+          switch (n) {
+            case 0: // Name
+              String newName = JOptionPane.showInputDialog("Enter the new name:");
+              data[itemIndex][0] = newName;
+              break;
+
+            case 1: // Stock
+              String newStock = JOptionPane.showInputDialog("Enter the new stock count:");
+              data[itemIndex][1] = newStock;
+              break;
+
+            case 2: // Price
+              String newPrice = JOptionPane.showInputDialog("Enter the new price:");
+              data[itemIndex][2] = newPrice;
+              break;
+          }
+
+        } else {
+          JOptionPane.showMessageDialog(null, "Item not found!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
       }
     });
 
