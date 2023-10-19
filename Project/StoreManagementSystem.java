@@ -1,10 +1,9 @@
 /* A management system for a store. 
 The user (owner of the store) can do followings with menu
 1. view all items
-2. add items one by one until reach the maximum
-3. search item with its name
-4. update items name, stock, price
-5. exit program
+2. search item with its name
+3. update items name, stock, price
+4. exit program
 */
 
 package Project;
@@ -17,41 +16,37 @@ public class StoreManagementSystem {
     Scanner scanner = new Scanner(System.in);
 
     // declare contents of store managment system
-    String[] items = new String[10];
-    int[] stock = new int[10];
-    float[] price = new float[10];
+    String[] items = {"dry food", "canned food", "litter", "toy", "collar"};
+    int[] stock = {44, 90, 100, 20, 8};
+    double[] price = {69.99, 48.50, 9.99, 4.59, 18.45};
 
     // Menu for users
     System.out.println("====== Ms.Shiro's Store Management System ====== ");
     System.out.println("Welcom Ms.Shiro!");
     System.out.println("Choose your option:");
     System.out.println("1. view all items");
-    System.out.println("2. add items");
-    System.out.println("3. search item");
-    System.out.println("4. update item");
-    System.out.println("5. exit");
+    System.out.println("2. search item");
+    System.out.println("3. update item");
+    System.out.println("4. exit");
 
     while (true) {
       int option = scanner.nextInt();
 
       switch (option) {
         case 1: // view all items
-          viewAllitems();
+          System.out.println("View all items:");
+          viewAllItems(items, stock, price);
           break;
 
-        case 2: // add items
-          addItems();
-          break;
-
-        case 3: // search item
+        case 2: // search item
           searchItem();
           break;
 
-        case 4: // update item
+        case 3: // update item
           updateItem();
           break;
 
-        case 5: // exit
+        case 4: // exit
           System.out.println("Goodbye, Ms.Shiro!");
           return;
 
@@ -59,17 +54,18 @@ public class StoreManagementSystem {
           System.out.println("Invalid option. Please try again.");
 
       }
+
+      scanner.close();
     }
 
   }
 
   /* Methods */
-  public static void viewAllitems() {
-    System.out.println("view all items");
-  }
-
-  public static void addItems() {
-    System.out.println("add items");
+  public static void viewAllItems(String[] items, int[] stock, double[] price) {
+    System.out.println("Name\tStock\tPrice($)");
+    for(int i = 0; i < items.length; i++){
+      System.out.println(items[i]+"\t"+stock[i]+"\t"+price[i]);
+    }
   }
 
   public static void searchItem() {
