@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class StoreManagementSystemGUI {
 
-  public StoreManagementSystemGUI() {
+  public StoreManagementSystemGUI(String[][] data) {
     // Create components
     JFrame frame = new JFrame("Ms.Shiro's Store Management System");
     JPanel menuPanel = new JPanel();
@@ -17,7 +17,9 @@ public class StoreManagementSystemGUI {
     viewAllItemsButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "View All Items Button Pressed");
+        String[] columnNames = {"Name", "Stock", "Price"};
+        JTable table = new JTable(data, columnNames);
+        JOptionPane.showMessageDialog(null, new JScrollPane(table), "View All Items", JOptionPane.INFORMATION_MESSAGE);
       }
     });
 
@@ -58,6 +60,17 @@ public class StoreManagementSystemGUI {
   }
 
   public static void main(String[] args) {
-    new StoreManagementSystemGUI();
+    String[] itemNames = { "treat", "can", "litter", "toy", "collar" };
+    int[] stock = { 44, 90, 100, 20, 8 };
+    double[] price = { 69.99, 48.50, 9.99, 4.59, 18.45 };
+
+    String[][] dataForTable = new String[itemNames.length][3];
+    for (int i = 0; i < itemNames.length; i++) {
+      dataForTable[i][0] = itemNames[i];
+      dataForTable[i][1] = Integer.toString(stock[i]);
+      dataForTable[i][2] = String.format("%.2f", price[i]);
+    }
+
+    new StoreManagementSystemGUI(dataForTable);
   }
 }
