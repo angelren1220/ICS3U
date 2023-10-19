@@ -1,6 +1,7 @@
 /**
  * StoreManagementSystem: A management system for a store.
  * The user (owner of the store) can:
+ * - Add all items
  * - View all items
  * - Search for an item by its name
  * - Update an item's name, stock, or price
@@ -12,14 +13,17 @@ package Project;
 import java.util.Scanner;
 
 public class StoreManagementSystem {
+
+  private static int maxItems = 5;
+
   public static void main(String[] args) {
 
     Scanner scanner = new Scanner(System.in);
 
     // declare contents of store managment system
-    String[] items = { "treat", "can", "litter", "toy", "collar" };
-    int[] stock = { 44, 90, 100, 20, 8 };
-    double[] price = { 69.99, 48.50, 9.99, 4.59, 18.45 };
+    String[] items = new String[maxItems];
+    int[] stock = new int[maxItems];
+    double[] price = new double[maxItems];
 
     // Menu for users
     displayMenu();
@@ -29,6 +33,10 @@ public class StoreManagementSystem {
       scanner.nextLine(); // Consume newline
 
       switch (option) {
+        case 0: // add all items
+          addItems(items, stock, price, scanner);
+          displayMenu();
+          break;
         case 1: // view all items
           System.out.println("View all items:");
           viewAllItems(items, stock, price);
@@ -39,7 +47,8 @@ public class StoreManagementSystem {
           int index = searchItem(items, scanner);
 
           if (index != -1) {
-            System.out.println("Index: " + index + " " + items[index] + " " + stock[index] + " in stock price: $" + price[index]);
+            System.out.println(
+                "Index: " + index + " " + items[index] + " " + stock[index] + " in stock price: $" + price[index]);
           } else {
             System.out.println("Could not find the item.");
           }
@@ -89,6 +98,23 @@ public class StoreManagementSystem {
   }
 
   /* Methods */
+
+  /**
+   * Add all items in the store.
+   */
+  public static void addItems(String[] items, int[] stock, double[] price, Scanner scanner) {
+    for (int i = 0; i < maxItems; i++) {
+      System.out.println("Enter name for item " + (i + 1));
+      items[i] = scanner.nextLine();
+      System.out.println("Enter stock for item " + (i + 1));
+      stock[i] = scanner.nextInt();
+      scanner.nextLine(); // Consume newline
+      System.out.println("Enter price for item " + (i + 1));
+      price[i] = scanner.nextDouble();
+      scanner.nextLine(); // Consume newline
+    }
+    System.out.println("All items added successfully!");
+  }
 
   /**
    * Display all items in the store.
@@ -184,6 +210,7 @@ public class StoreManagementSystem {
     System.out.println("\n====== Ms.Shiro's Store Management System ======");
     System.out.println("Welcome Ms.Shiro!");
     System.out.println("Choose your option:");
+    System.out.println("0. add all items");
     System.out.println("1. view all items");
     System.out.println("2. search item");
     System.out.println("3. update item");

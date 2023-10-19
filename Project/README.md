@@ -1,6 +1,6 @@
 ## **Project Description**
 
-**Ms. Shiro's Store Management System** is designed to aid Ms. Shiro in overseeing her store's inventory in a straightforward and efficient manner. Through a console interface, the system offers functionalities such as viewing all items, searching for a specific item, updating item details, and exiting the application. The primary goal is to provide a smooth experience for Ms. Shiro to manage her store without complex operations.
+**Ms. Shiro's Store Management System** is designed to aid Ms. Shiro in overseeing her store's inventory in a straightforward and efficient manner. Through a console interface, the system offers functionalities such as add items, viewing all items, searching for a specific item, updating item details, and exiting the application. The primary goal is to provide a smooth experience for Ms. Shiro to manage her store without complex operations.
 
 ---
 
@@ -16,6 +16,7 @@ Attributes:
 
 Methods:
 + main(args: String[]): void
++ addItems(): void
 + viewAllItems(items: String[], stock: int[], price: double[]): void
 + searchItem(items: String[], scanner: Scanner): int
 + updateItem(items: String[], scanner: Scanner): void
