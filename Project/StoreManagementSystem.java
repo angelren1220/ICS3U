@@ -1,10 +1,11 @@
-/* A management system for a store. 
-The user (owner of the store) can do followings with menu
-1. view all items
-2. search item with its name
-3. update items name, stock, price
-4. exit program
-*/
+/**
+ * StoreManagementSystem: A management system for a store.
+ * The user (owner of the store) can:
+ * - View all items
+ * - Search for an item by its name
+ * - Update an item's name, stock, or price
+ * - Exit the program
+ */
 
 package Project;
 
@@ -50,28 +51,28 @@ public class StoreManagementSystem {
           break;
 
         case 3: // update item
+          // Update options
           System.out.println("Choose an option to be updated:");
           System.out.println("1. name");
           System.out.println("2. stock");
           System.out.println("3. price");
-          
+
           int updateOption = scanner.nextInt();
           scanner.nextLine(); // Consume newline
 
-          if(updateOption == 1){
-            updateItem(items, scanner);
-          }
-
-          else if(updateOption == 2){
-            updateStock(stock, scanner);
-          }
-
-          else if(updateOption == 3){
-            updatePrice(price, scanner);
-          }
-
-          else{
-            System.out.println("Invalid option. Back to main menu.");
+          switch (updateOption) {
+            case 1:
+              updateItem(items, scanner);
+              break;
+            case 2:
+              updateStock(stock, scanner);
+              break;
+            case 3:
+              updatePrice(price, scanner);
+              break;
+            default:
+              System.out.println("Invalid option. Back to main menu.");
+              break;
           }
           break;
 
@@ -90,6 +91,10 @@ public class StoreManagementSystem {
   }
 
   /* Methods */
+
+  /**
+   * Display all items in the store.
+   */
   public static void viewAllItems(String[] items, int[] stock, double[] price) {
     System.out.println("Name\tStock\tPrice($)");
     System.out.println("-----------------------------");
@@ -102,6 +107,10 @@ public class StoreManagementSystem {
     System.out.println("Total number of items: " + totalItems);
   }
 
+  /**
+   * Search for an item by name and return its index.
+   * Returns -1 if not found.
+   */
   public static int searchItem(String[] items, Scanner scanner) {
     System.out.println("Enter item name to search:");
     String name = scanner.nextLine();
@@ -113,6 +122,9 @@ public class StoreManagementSystem {
     return -1;
   }
 
+  /**
+   * Update the name of an item by index.
+   */
   public static void updateItem(String[] items, Scanner scanner) {
     System.out.println("Enter the item index to be updated:");
     int index = scanner.nextInt();
@@ -124,6 +136,9 @@ public class StoreManagementSystem {
 
   }
 
+  /**
+   * Update the stock of an item by index.
+   */
   public static void updateStock(int[] stock, Scanner scanner) {
     System.out.println("Enter the stock index to be updated:");
     int index = scanner.nextInt();
@@ -135,6 +150,9 @@ public class StoreManagementSystem {
 
   }
 
+  /**
+   * Update the price of an item by index.
+   */
   public static void updatePrice(double[] price, Scanner scanner) {
     System.out.println("Enter the price index to be updated:");
     int index = scanner.nextInt();
@@ -146,10 +164,13 @@ public class StoreManagementSystem {
 
   }
 
-  public static int sum(int[] stock){
+  /**
+   * Calculate the total number of items in stock.
+   */
+  public static int sum(int[] stock) {
     int sum = 0;
 
-    for(int i = 0; i < stock.length; i++){
+    for (int i = 0; i < stock.length; i++) {
       sum += stock[i];
     }
     return sum;
