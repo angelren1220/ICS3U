@@ -17,7 +17,7 @@ public class StoreManagementSystemGUI {
     viewAllItemsButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        String[] columnNames = {"Name", "Stock", "Price"};
+        String[] columnNames = { "Name", "Stock", "Price" };
         JTable table = new JTable(data, columnNames);
         JOptionPane.showMessageDialog(null, new JScrollPane(table), "View All Items", JOptionPane.INFORMATION_MESSAGE);
       }
@@ -26,7 +26,22 @@ public class StoreManagementSystemGUI {
     searchItemButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Search Item Button Pressed");
+        String itemName = JOptionPane.showInputDialog("Enter the name of the item to search:");
+        int itemIndex = -1;
+        for (int i = 0; i < data.length; i++) {
+          if (data[i][0].equalsIgnoreCase(itemName)) {
+            itemIndex = i;
+            break;
+          }
+        }
+
+        if (itemIndex != -1) {
+          JOptionPane.showMessageDialog(null,
+              "Name: " + data[itemIndex][0] + "\nStock: " + data[itemIndex][1] + "\nPrice: $" + data[itemIndex][2],
+              "Item Found", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+          JOptionPane.showMessageDialog(null, "Item not found!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
       }
     });
 
