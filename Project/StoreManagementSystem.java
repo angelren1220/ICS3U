@@ -92,9 +92,14 @@ public class StoreManagementSystem {
   /* Methods */
   public static void viewAllItems(String[] items, int[] stock, double[] price) {
     System.out.println("Name\tStock\tPrice($)");
+    System.out.println("-----------------------------");
     for (int i = 0; i < items.length; i++) {
       System.out.println(items[i] + "\t" + stock[i] + "\t" + price[i]);
     }
+
+    int totalItems = sum(stock);
+    System.out.println("-----------------------------");
+    System.out.println("Total number of items: " + totalItems);
   }
 
   public static int searchItem(String[] items, Scanner scanner) {
@@ -139,5 +144,14 @@ public class StoreManagementSystem {
     double number = scanner.nextDouble();
     price[index] = number;
 
+  }
+
+  public static int sum(int[] stock){
+    int sum = 0;
+
+    for(int i = 0; i < stock.length; i++){
+      sum += stock[i];
+    }
+    return sum;
   }
 }
