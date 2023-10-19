@@ -31,6 +31,7 @@ public class StoreManagementSystem {
 
     while (true) {
       int option = scanner.nextInt();
+      scanner.nextLine(); // Consume newline
 
       switch (option) {
         case 1: // view all items
@@ -39,7 +40,8 @@ public class StoreManagementSystem {
           break;
 
         case 2: // search item
-          searchItem();
+          int index = searchItem(items, scanner);
+          System.out.println(stock[index] + " in stock price: $" + price[index]);
           break;
 
         case 3: // update item
@@ -48,6 +50,7 @@ public class StoreManagementSystem {
 
         case 4: // exit
           System.out.println("Goodbye, Ms.Shiro!");
+          scanner.close();
           return;
 
         default:
@@ -55,7 +58,6 @@ public class StoreManagementSystem {
 
       }
 
-      scanner.close();
     }
 
   }
@@ -68,8 +70,15 @@ public class StoreManagementSystem {
     }
   }
 
-  public static void searchItem() {
-    System.out.println("search item");
+  public static int searchItem(String[] items, Scanner scanner) {
+    System.out.println("Enter item name to search:");
+    String name = scanner.nextLine();
+    for(int i = 0; i < items.length; i++){
+      if(name.equals(items[i])){
+        return i;
+      }
+    }
+    return -1;
   }
 
   public static void updateItem() {
