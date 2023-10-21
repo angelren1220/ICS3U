@@ -31,8 +31,25 @@ public class StoreManagementSystem {
     displayMenu();
 
     while (true) {
-      int option = scanner.nextInt();
-      scanner.nextLine(); // Consume newline
+      int option = -1;
+      boolean isValidInput = false;
+
+      // validate user input
+      while(!isValidInput){
+        try {
+          if(scanner.hasNextInt()){
+            option = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            isValidInput = true;
+          } else {
+            System.out.println("Invalid input. Please enter a valid option number.");
+            scanner.nextLine(); // Consume the invalid input
+          }
+        } catch (Exception e){
+          System.out.println("Error reading input. Please try again.");
+            scanner.nextLine(); // Consume any leftover input
+        }
+      }
 
       switch (option) {
         case 0: // add all items
