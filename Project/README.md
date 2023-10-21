@@ -23,6 +23,7 @@ Methods:
 + updateStock(stock: int[], scanner: Scanner): void
 + updatePrice(price: double[], scanner: Scanner): void
 + sum(stock: int[]): int
++ displayMenu(): void
 ```
 
 ---

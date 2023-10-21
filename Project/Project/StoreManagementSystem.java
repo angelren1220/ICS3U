@@ -26,6 +26,8 @@ public class StoreManagementSystem {
     double[] price = new double[maxItems];
 
     // Menu for users
+    System.out.println("====== Ms.Shiro's Store Management System ======");
+    System.out.println("Welcome Ms.Shiro!");
     displayMenu();
 
     while (true) {
@@ -57,6 +59,7 @@ public class StoreManagementSystem {
 
         case 3: // update item
           // Update options
+          int updatedItemindex = searchItem(items, scanner);
           System.out.println("Choose an option to be updated:");
           System.out.println("1. name");
           System.out.println("2. stock");
@@ -67,13 +70,13 @@ public class StoreManagementSystem {
 
           switch (updateOption) {
             case 1:
-              updateItem(items, scanner);
+              updateItem(updatedItemindex, items, scanner);
               break;
             case 2:
-              updateStock(stock, scanner);
+              updateStock(updatedItemindex, stock, scanner);
               break;
             case 3:
-              updatePrice(price, scanner);
+              updatePrice(updatedItemindex, price, scanner);
               break;
             default:
               System.out.println("Invalid option. Back to main menu.");
@@ -90,6 +93,7 @@ public class StoreManagementSystem {
         default:
           System.out.println("Invalid option. Please try again.");
           displayMenu();
+          break;
 
       }
 
@@ -149,45 +153,50 @@ public class StoreManagementSystem {
   /**
    * Update the name of an item by index.
    */
-  public static void updateItem(String[] items, Scanner scanner) {
-    System.out.println("Enter the item index to be updated:");
-    int index = scanner.nextInt();
-    scanner.nextLine(); // consume new line
+  public static void updateItem(int index, String[] items, Scanner scanner) {
+   
+    if(index != -1){
+      System.out.println("Enter the name:");
+      String name = scanner.nextLine();
+      items[index] = name;
+      System.out.println("Update successfully!");
+    } else {
+      System.out.println("Could not find the item.");
+    }
 
-    System.out.println("Enter the name:");
-    String name = scanner.nextLine();
-    items[index] = name;
-    System.out.println("Update successfully!");
 
   }
 
   /**
    * Update the stock of an item by index.
    */
-  public static void updateStock(int[] stock, Scanner scanner) {
-    System.out.println("Enter the stock index to be updated:");
-    int index = scanner.nextInt();
-    scanner.nextLine(); // consume new line
+  public static void updateStock(int index, int[] stock, Scanner scanner) {
 
-    System.out.println("Enter the updated stock:");
-    int number = scanner.nextInt();
-    stock[index] = number;
-    System.out.println("Update successfully!");
+    if(index != -1){
+      System.out.println("Enter the updated stock:");
+      int number = scanner.nextInt();
+      stock[index] = number;
+      System.out.println("Update successfully!");
+    } else {
+      System.out.println("Could not find the item.");
+    }
 
   }
 
   /**
    * Update the price of an item by index.
    */
-  public static void updatePrice(double[] price, Scanner scanner) {
-    System.out.println("Enter the price index to be updated:");
-    int index = scanner.nextInt();
-    scanner.nextLine(); // consume new line
+  public static void updatePrice(int index, double[] price, Scanner scanner) {
 
-    System.out.println("Enter the updated price:");
-    double number = scanner.nextDouble();
-    price[index] = number;
-    System.out.println("Update successfully!");
+    if(index != -1){
+      System.out.println("Enter the updated price:");
+      double number = scanner.nextDouble();
+      price[index] = number;
+      System.out.println("Update successfully!");
+
+    } else {
+      System.out.println("Could not find the item.");
+    }
 
   }
 
@@ -207,8 +216,7 @@ public class StoreManagementSystem {
    * Display the menu for user
    */
   public static void displayMenu() {
-    System.out.println("\n====== Ms.Shiro's Store Management System ======");
-    System.out.println("Welcome Ms.Shiro!");
+    System.out.println("\n --------------- Main Menu ---------------");
     System.out.println("Choose your option:");
     System.out.println("0. add all items");
     System.out.println("1. view all items");
