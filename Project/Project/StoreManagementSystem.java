@@ -114,7 +114,7 @@ public class StoreManagementSystem {
       stock[i] = getValidIntInput(scanner);
       scanner.nextLine(); // Consume newline
       System.out.println("Enter price for item " + (i + 1));
-      price[i] = scanner.nextDouble();
+      price[i] = getValidDoubleInput(scanner);
       scanner.nextLine(); // Consume newline
     }
     System.out.println("All items added successfully!");
@@ -189,7 +189,7 @@ public class StoreManagementSystem {
 
     if (index != -1) {
       System.out.println("Enter the updated price:");
-      double number = scanner.nextDouble();
+      double number = getValidDoubleInput(scanner);
       price[index] = number;
       System.out.println("Update successfully!");
 
@@ -224,24 +224,43 @@ public class StoreManagementSystem {
     System.out.println("4. exit\n");
   }
 
-  /* 
+  /*
    * getValidIntInput
    */
 
-   public static int getValidIntInput(Scanner scanner) {
+  public static int getValidIntInput(Scanner scanner) {
     while (true) {
-        try {
-            if (scanner.hasNextInt()) {
-                return scanner.nextInt();
-            } else {
-                System.out.println("Invalid input. Please enter a valid number.");
-                scanner.nextLine(); // Consume the invalid input
-            }
-        } catch (Exception e) {
-            System.out.println("Error reading input. Please try again.");
-            scanner.nextLine(); // Consume any leftover input
+      try {
+        if (scanner.hasNextInt()) {
+          return scanner.nextInt();
+        } else {
+          System.out.println("Invalid input. Please enter a valid number.");
+          scanner.nextLine(); // Consume the invalid input
         }
+      } catch (Exception e) {
+        System.out.println("Error reading input. Please try again.");
+        scanner.nextLine(); // Consume any leftover input
+      }
     }
-}
+  }
+
+  /*
+   * getValidDoubleInput
+   */
+  public static double getValidDoubleInput(Scanner scanner) {
+    while (true) {
+      try {
+        if (scanner.hasNextDouble()) {
+          return scanner.nextDouble();
+        } else {
+          System.out.println("Invalid input. Please enter a valid number.");
+          scanner.nextLine(); // Consume the invalid input
+        }
+      } catch (Exception e) {
+        System.out.println("Error reading input. Please try again.");
+        scanner.nextLine(); // Consume any leftover input
+      }
+    }
+  }
 
 }
