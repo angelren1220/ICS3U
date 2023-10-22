@@ -31,25 +31,8 @@ public class StoreManagementSystem {
     displayMenu();
 
     while (true) {
-      int option = -1;
-      boolean isValidInput = false;
-
-      // validate user input
-      while(!isValidInput){
-        try {
-          if(scanner.hasNextInt()){
-            option = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
-            isValidInput = true;
-          } else {
-            System.out.println("Invalid input. Please enter a valid option number.");
-            scanner.nextLine(); // Consume the invalid input
-          }
-        } catch (Exception e){
-          System.out.println("Error reading input. Please try again.");
-            scanner.nextLine(); // Consume any leftover input
-        }
-      }
+      int option = getValidIntInput(scanner);
+      scanner.nextLine(); // Consume newline
 
       switch (option) {
         case 0: // add all items
@@ -82,7 +65,7 @@ public class StoreManagementSystem {
           System.out.println("2. stock");
           System.out.println("3. price");
 
-          int updateOption = scanner.nextInt();
+          int updateOption = getValidIntInput(scanner);
           scanner.nextLine(); // Consume newline
 
           switch (updateOption) {
@@ -128,7 +111,7 @@ public class StoreManagementSystem {
       System.out.println("Enter name for item " + (i + 1));
       items[i] = scanner.nextLine();
       System.out.println("Enter stock for item " + (i + 1));
-      stock[i] = scanner.nextInt();
+      stock[i] = getValidIntInput(scanner);
       scanner.nextLine(); // Consume newline
       System.out.println("Enter price for item " + (i + 1));
       price[i] = scanner.nextDouble();
@@ -171,8 +154,8 @@ public class StoreManagementSystem {
    * Update the name of an item by index.
    */
   public static void updateItem(int index, String[] items, Scanner scanner) {
-   
-    if(index != -1){
+
+    if (index != -1) {
       System.out.println("Enter the name:");
       String name = scanner.nextLine();
       items[index] = name;
@@ -181,7 +164,6 @@ public class StoreManagementSystem {
       System.out.println("Could not find the item.");
     }
 
-
   }
 
   /**
@@ -189,9 +171,9 @@ public class StoreManagementSystem {
    */
   public static void updateStock(int index, int[] stock, Scanner scanner) {
 
-    if(index != -1){
+    if (index != -1) {
       System.out.println("Enter the updated stock:");
-      int number = scanner.nextInt();
+      int number = getValidIntInput(scanner);
       stock[index] = number;
       System.out.println("Update successfully!");
     } else {
@@ -205,7 +187,7 @@ public class StoreManagementSystem {
    */
   public static void updatePrice(int index, double[] price, Scanner scanner) {
 
-    if(index != -1){
+    if (index != -1) {
       System.out.println("Enter the updated price:");
       double number = scanner.nextDouble();
       price[index] = number;
@@ -241,4 +223,25 @@ public class StoreManagementSystem {
     System.out.println("3. update item");
     System.out.println("4. exit\n");
   }
+
+  /* 
+   * getValidIntInput
+   */
+
+   public static int getValidIntInput(Scanner scanner) {
+    while (true) {
+        try {
+            if (scanner.hasNextInt()) {
+                return scanner.nextInt();
+            } else {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Consume the invalid input
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading input. Please try again.");
+            scanner.nextLine(); // Consume any leftover input
+        }
+    }
+}
+
 }
