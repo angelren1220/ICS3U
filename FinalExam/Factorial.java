@@ -12,6 +12,8 @@ public class Factorial {
     int result = factorial(number);
 
     System.out.println(number + "! = " + result);
+
+    scanner.close();
   }
 
   public static int factorial(int number){
