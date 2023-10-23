@@ -1,0 +1,36 @@
+1. Virus: Computer virus is a program loaded into
+your computer without your help and without
+your knowledge.
+• It implants itself into an executable file and spreads
+from one file to another.
+• Viruses attach themselves to clean files and infect
+other clean files.
+•They can spread uncontrollably, damage a system’s
+core functionality, delete or corrupt files.
+• They usually appear as an executable file
+2. Trojans: It looks legitimate but can take
+control of your computer. – It is designed to damage, disrupt, steal, or in
+general inflict some other harmful action on your
+data or network. – It seeks to deceive you into loading and executing
+the malware on your device. – It is hidden, does not copy but damage. – It tends to act discreetly and create backdoors.
+3. Spyware: – It is designed to spy on you. – It hides in the background and take notes on what
+you do online, your passwords, credit card
+number, surfing habits etc.
+4. Adware: A software to advertise aggressively. – It often hijacks computer for commercial
+purposes. – It can undermine your security just to serve you
+ads. – It can give a lot of other malware a way in. – It is not always malicious in nature.
+5. Worm: copies itself and uses memory. – Worms infect entire networks of devices. – It uses each consecutive infected machine to
+infect more.
+
+How To Protect From Malware
+• Install & run Anti-Virus Software
+• Update software regularly
+• Be careful of attached files in email
+• Be careful of using a media
+• Be careful of who you add in social media
+• Be careful of clicking web links
+• Watch during downloading from internet
+• Back up your files.
+• Create partitions on your computer
+• Have a recovery drive
+@pe
